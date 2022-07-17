@@ -1,25 +1,45 @@
-import logo from './logo.svg';
 import './App.css';
+import { Routes, Route, Link} from "react-router-dom";
+import Typography from '@mui/material/Typography';
+import ButtonAppBar from './AppBar';
 
-function App() {
+function Home() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <nav>
+        <Link to="/about">About</Link>
+      </nav>
+    </>
   );
 }
 
-export default App;
+function About() {
+  return (
+    <>
+      <nav>
+        <Link to="/">Home</Link>
+      </nav>
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <div className="App">
+      <ButtonAppBar />
+      <Routes>
+        <Route path="/" element={
+          <Typography variant="h2" gutterBottom component="div">
+            Home
+          </Typography>
+        }/>
+
+        <Route path="about" element={
+          <Typography variant="h2" gutterBottom component="div">
+            About
+          </Typography>
+        } />
+      </Routes>      
+    </div>
+  );
+}
